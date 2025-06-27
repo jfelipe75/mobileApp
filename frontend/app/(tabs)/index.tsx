@@ -20,7 +20,7 @@ type Task = {
 
 export default function HomeScreen() {
   // Task list state
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);  // type <Task[]> ensures tasks is an array of Task objects
 
   // Load tasks from AsyncStorage when app starts
   useEffect(() => {
@@ -33,11 +33,12 @@ export default function HomeScreen() {
   }, [tasks]);
 
   // Add a new task
-  const handleAddTask = (title: string) => {
-    const newTask: Task = {
+  const handleAddTask = (title: string) => {  // takes a string as input, title is the task itself
+    const newTask: Task = {  // create a new task object
+      // Generate a unique ID using current timestamp
       id: Date.now().toString(),
-      title,
-      completed: false,
+      title, 
+      completed: false, // new tasks are not completed by default
     };
     setTasks(prev => [newTask, ...prev]);
   };
@@ -51,15 +52,18 @@ export default function HomeScreen() {
   };
 
   // Delete a task by filtering it out
-  const deleteTask = (id: string) => {
-    const filtered = tasks.filter(task => task.id !== id);
+  const deleteTask = (id: string) => { // find the task by id and remove it
+    const filtered = tasks.filter(task => task.id !== id); // as long as the id does not match, keep the task
+    // Update state with the filtered tasks
     setTasks(filtered);
   };
 
   // AsyncStorage save
-  const saveTasksToStorage = async (tasksToSave: Task[]) => {
+  const saveTasksToStorage = async (tasksToSave: Task[]) => { // data is save asynchronously in order to not block the UI
     try {
+      // Convert tasks array to JSON string for storage
       const json = JSON.stringify(tasksToSave);
+      // Save the JSON string to AsyncStorage under the key '@tasks'
       await AsyncStorage.setItem('@tasks', json);
     } catch (error) {
       console.error('Error saving tasks:', error);
@@ -101,7 +105,7 @@ export default function HomeScreen() {
         keyExtractor={(item) => item.id}
         renderItem={renderTaskItem}
         ListEmptyComponent={
-          <Text style={styles.emptyMessage}>No tasks yet. Add one above! Kris</Text>
+          <Text style={styles.emptyMessage}>No tasks yet. Add one above!</Text>
         }
       />
     </View>
