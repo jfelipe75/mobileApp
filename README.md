@@ -1,79 +1,77 @@
-## To-Do App (React Native + TypeScript)
-This is a simple mobile to-do list application built with React Native and TypeScript. It allows users to add, complete, and delete tasks, and it stores tasks locally on the user's device using AsyncStorage.
+## To-Do App (React Native + Expo + TypeScript)
+This is a mobile to-do list app built using React Native with Expo and TypeScript. Users can add, complete, and delete tasks, which are stored locally using AsyncStorage. Navigation is handled with Expo Router.
 
 ### Project Structure
-
-/App.tsx - Root component with app logic and UI
-/components/ - (Optional) Folder to hold reusable UI components
-├─ TaskItem.tsx - Renders individual task items with toggle/delete
-└─ TaskForm.tsx - Input field and button for adding new tasks
+bash
+Copy
+Edit
+/app/                    - File-based routing using Expo Router
+/components/             - (Optional) Reusable UI components (e.g., TaskItem, TaskForm)
+/App.tsx or /index.ts    - App entry point
 
 ### Prerequisites
+Before running the app, make sure you have:
 
-Before running this app, make sure you have the following installed:
+Node.js (v14 or later)
 
-Node.js (v14 or higher)
+Expo CLI — no need to install globally
 
-npm or Yarn
+Android Studio or Xcode (for emulator/simulator use)
 
-React Native CLI or Expo CLI
-
+A physical device with the Expo Go app (optional for testing)
 
 ### Setup Instructions
-
 Clone the repository:
 
+bash
+Copy
+Edit
 git clone https://github.com/your-username/todo-app.git
-cd frontend
-
+cd todo-app
 Install dependencies:
 
+bash
+Copy
+Edit
 npm install
-or
-yarn install
+Start the development server:
 
-Install AsyncStorage:
-
-npm install @react-native-async-storage/async-storage
-npx pod-install
-
-Run the app:
-
-npx react-native run-android
-or
-npx react-native run-ios
-
-If using Expo:
-
+bash
+Copy
+Edit
 npx expo start
+Then press a to open on Android, i for iOS, or w for web
 
-API Endpoints
+You can also scan the QR code using the Expo Go app on your phone
 
-This project does not connect to an external API.
+### API Endpoints
+This project does not use an external API.
 All data is stored locally on the device using AsyncStorage.
 
-Frontend Features
+### Frontend Features
+Add new tasks via an input form
 
-Add new tasks using a simple input form
+Tap tasks to mark them as complete or incomplete
 
-Tap a task to mark it as complete/incomplete
+Delete tasks with a button
 
-Delete tasks using a button
+Persist data locally using AsyncStorage (tasks stay after app restarts)
 
-Tasks persist across app restarts using AsyncStorage
+Responsive UI using React Native's built-in styling
 
-Clean mobile-friendly UI using built-in React Native components
+Page-based navigation with Expo Router
 
-Technologies Used
+### Technologies Used
+Expo SDK 53
 
-React Native – Mobile app framework
+React Native 0.79
 
-TypeScript – Strongly typed JavaScript
+TypeScript
 
-AsyncStorage – Local key-value storage for React Native
+Expo Router (file-based navigation)
 
-React Native CLI – For running and managing the app
+AsyncStorage (@react-native-async-storage/async-storage)
 
-License
+Core React Native components (View, Text, TouchableOpacity, etc.)
 
-This project is open-source and available under the MIT License.
+
